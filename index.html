@@ -1,477 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nationalism in India Notes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles.css">
-    <script type="module">
+    <title>Password Protected Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000428, #004e92);
+            overflow: hidden;
+            position: relative;
+            color: white;
+            display: flex; /* Added Flexbox */
+            align-items: center; /* Vertically centers */
+            justify-content: center; /* Horizontally centers */
+        }
 
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-        mermaid.initialize({ startOnLoad: true });
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8); /* Slight transparency for stars */
+            border-radius: 50%;
+            animation: twinkling 2s infinite alternate;
+            opacity: 0.8;
+        }
 
-    </script>
+        @keyframes twinkling {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
 
+        #passwordSection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+            animation: fadeIn 1s ease;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .input-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        input[type="password"], input[type="text"] {
+            padding: 10px 35px 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        input[type="password"]:focus, input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 18px;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        #submitButton {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #submitButton:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #protectedContent {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            animation: slideIn 1s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        #errorMsg {
+            color: red;
+            display: none;
+            margin-top: 15px;
+            animation: shake 0.5s ease forwards;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            #passwordSection {
+                width: 90%;
+                padding: 20px;
+            }
+            input[type="password"], input[type="text"] {
+                font-size: 14px;
+            }
+            #submitButton {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body class="light-mode">
- <div class="page-count" id="page-count">
-        <span id="current-section">1</span> / <span id="total-sections">1</span>
-    </div>
-    
-    <!-- Hamburger Menu -->
-
-<div class="hamburger-menu">
-
-  <button class="menu-toggle">
-
-    <span class="menu-icon">☰️</span>
-
-  </button>
-
-  <div class="dropdown-content" style="background-color: black;">
-
-    <div class="mode-container" style="background-color: black;">
-
-      <button class="mode-button" onclick="setMode('dark')">
-
-        <span class="mode-icon">🌑</span>
-
-        <span class="mode-text">Dark</span>
-
-      </button>
-
-      <button class="mode-button" onclick="setMode('color')">
-
-        <span class="mode-icon">🟢</span>
-
-        <span class="mode-text">Color</span>
-
-      </button>
-
-      <button class="mode-button" onclick="setMode('light')">
-
-        <span class="mode-icon">🌞</span>
-
-        <span class="mode-text">Light</span>
-
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-  
-    <div class="container">
-    <div class="continuous-line"></div> <!-- Continuous line from top to bottom -->
-        <!-- Section 1 -->
-
-        <div class="note section-1 section">
-
-            <div class="year-container first">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1869</span>
-
-                </div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>Gandhi's Early Life and Return to India</h2>
-
-    <p><strong>October 2, 1869</strong>: <a href="https://en.wikipedia.org/wiki/Mahatma_Gandhi" target="_blank">Mahatma Gandhi</a> was born in Porbandar, Gujarat.</p>
-
-    <p><strong>1888</strong>: Gandhi traveled to London to study law. <span class="arrow">&#x2192;</span> <span class="meaning">He was exposed to various ideas, including those of non-violence, which later influenced his philosophy.</span></p>
-
-    <p><strong>1893</strong>: Gandhi went to South Africa to work as a lawyer. He faced racial discrimination, which led to the development of <a href="https://en.wikipedia.org/wiki/Satyagraha" target="_blank">Satyagraha</a> - a method of non-violent resistance. <span class="arrow">&#x2192;</span> <span class="meaning">Satyagraha, meaning "truth force," became a cornerstone of his strategy for resisting oppression.</span></p>
-
-    <p><strong>1915</strong>: Gandhi returned to India. <span class="arrow">&#x2192;</span> <span class="meaning">He spent the first few years traveling across the country, understanding the conditions of the masses and preparing for his role in the freedom struggle.</span></p>
-
-                    <span class="arrow">&#x2192;</span> <span class="meaning">Meaning: Satyagraha is a form of non-violent resistance.</span>
-
-                </p>
-
-            </div>
-
-        </div>
-
-        
-
-        <!-- Section 2 -->
-
-        <div class="note section-2 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1915</span>
-
-                </div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>Gandhi's Return to India and Initial Satyagrahas</h2>
-
-    <p><strong>January 9, 1915</strong>: <a href="https://en.wikipedia.org/wiki/Mahatma_Gandhi" target="_blank">Gandhi returned to India</a> from South Africa. <span class="arrow">&#x2192;</span> <span class="meaning">He began working on issues related to the Indian masses and took up the cause of peasants and workers.</span></p>
-
-    <p><strong>1917</strong>: <a href="https://en.wikipedia.org/wiki/Champaran_Satyagraha" target="_blank">Champaran Satyagraha</a> (Bihar). <span class="arrow">&#x2192;</span> <span class="meaning">Cause: Indigo farmers were forced to grow indigo under the oppressive tinkathia system, where they had to cultivate indigo on 3/20th of their land and sell it at prices fixed by European planters. This led to severe exploitation and financial hardships for the farmers. Gandhi led the movement, which eventually resulted in the abolition of the tinkathia system.</span></p>
-
-    <p><strong>1918</strong>: <a href="https://en.wikipedia.org/wiki/Ahmedabad_Mill_Strike" target="_blank">Ahmedabad Mill Strike</a> - Gandhi led a successful strike for better wages. <span class="arrow">&#x2192;</span> <span class="meaning">Cause: Workers in the textile mills of Ahmedabad were demanding a 50% wage increase due to inflation and the increased cost of living during World War I. Mill owners were unwilling to agree to these demands, leading to the strike. Gandhi’s intervention helped the workers secure a 35% wage hike.</span></p>
-
-    <p><strong>1918</strong>: <a href="https://en.wikipedia.org/wiki/Kheda_Satyagraha" target="_blank">Kheda Satyagraha</a> (Gujarat) - Gandhi led peasants in a tax revolt. <span class="arrow">&#x2192;</span> <span class="meaning">Cause: Due to crop failures and a plague epidemic, the peasants of Kheda were unable to pay the high taxes demanded by the British government. Despite their inability to pay, the government refused to suspend the tax collection, prompting the revolt. Gandhi's leadership led to the suspension of tax collection and the return of seized properties to the peasants.</span></p>
-            </div>
-
-        </div>
-
-        
-
-        <!-- Section 3 -->
-
-        <div class="note section-3 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1919</span>
-
-                </div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>The Khilafat Movement and Rowlatt Satyagraha</h2>
-
-<p><strong>1919</strong>: <a href="https://en.wikipedia.org/wiki/Khilafat_Movement" target="_blank">Khilafat Movement</a> - Aimed to protect the position of the Caliph. <span class="arrow">&#x2192;</span> <span class="meaning">The Caliph, or Khalifa, was the spiritual head of Islam. The British dismantled the Ottoman Empire after World War I, leading to fears among Indian Muslims that the position of the Caliph would be weakened. This movement was also an effort to unite Hindus and Muslims in the freedom struggle.</span></p>
-
-<p><strong>1919</strong>: <a href="https://en.wikipedia.org/wiki/Rowlatt_Act" target="_blank">Rowlatt Act</a> and Satyagraha - Allowed the British to imprison anyone without trial for two years. <span class="arrow">&#x2192;</span> <span class="meaning">Cause: The British introduced this draconian act to curb the rising nationalist sentiments in India, particularly because Gandhi was successfully uniting Hindus and Muslims against British rule. Gandhi initiated a nationwide Satyagraha to protest this act, leading to widespread unrest.</span></p>
-
-<p><strong>April 10, 1919</strong>: <span class="meaning">Martial law was imposed in Punjab, restricting all gatherings, meetings, and festivals to curb anti-British activities. General Dyer was given charge to enforce this martial law.</span></p>
-
-<p><strong>April 13, 1919</strong>: <a href="https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre" target="_blank">Jallianwala Bagh Massacre</a> - Hundreds were killed by General Dyer's orders. <span class="arrow">&#x2192;</span> <span class="meaning">Cause: Despite the martial law restrictions, people gathered in Jallianwala Bagh, Amritsar, to celebrate Baisakhi and protest against the arrest of their leaders. General Dyer, considering this gathering a threat to law and order, ordered his troops to open fire on the unarmed crowd, resulting in a massacre. The day was later referred to as a "Black Day" in Indian history, symbolizing the brutality of British colonial rule.</span></p>
-
-<p><strong>Consequences</strong>: The Jallianwala Bagh Massacre led to widespread outrage and protests across the country. Gandhi, who was deeply disturbed by the violence, decided to launch a non-cooperation movement to intensify the struggle against British rule. The massacre also exposed the brutal nature of British colonialism to the world, garnering international condemnation.</p>
-
-<p><strong>Gandhi's Actions</strong>: After the massacre, Gandhi withdrew his support for the British during World War I, which he had previously extended. He also called for nationwide non-cooperation with the British government, marking a significant escalation in the Indian freedom struggle.</p>
-      
-
-            </div>
-
-        </div>
-
-        <!-- Section 4 -->
-
-        <div class="note section-4 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1920</span>
-
-                </div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>Non-Cooperation Movement (1920-1922)</h2>
-
-<p><strong>September 1920</strong>: <a href="https://en.wikipedia.org/wiki/Non-cooperation_movement" target="_blank">Non-Cooperation Movement</a> launched due to the <a href="https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre" target="_blank">Jallianwala Bagh Massacre</a>, <a href="https://en.wikipedia.org/wiki/Rowlatt_Act" target="_blank">Rowlatt Act</a>, and <a href="https://en.wikipedia.org/wiki/Khilafat_Movement" target="_blank">Khilafat issue</a>. <span class="arrow">&#x2192;</span> <span class="meaning">Cause: Gandhi launched the Non-Cooperation Movement to harness the anger of the Indian masses against British rule. The movement encouraged the boycott of British goods, educational institutions, law courts, and the renunciation of British titles and honors. The objective was to exert economic pressure on the British government and demonstrate the Indian resolve to achieve self-rule.</span></p>
-
-<p><strong>December 1920</strong>: The <a href="https://en.wikipedia.org/wiki/Calcutta_session_of_1920" target="_blank">Calcutta Session of the Indian National Congress</a> endorsed the Non-Cooperation Movement. <span class="arrow">&#x2192;</span> <span class="meaning">This session, presided over by Lala Lajpat Rai, marked a turning point in the Indian freedom struggle, as it officially adopted Gandhi's strategy of non-violent resistance as the Congress's official policy.</span></p>
-
-<p><strong>December 1920</strong>: At the <a href="https://en.wikipedia.org/wiki/Nagpur_session_of_1920" target="_blank">Nagpur Session of the Indian National Congress</a>, the movement was formally ratified and intensified. <span class="arrow">&#x2192;</span> <span class="meaning">The Nagpur Session resolved to make the Non-Cooperation Movement a mass struggle involving all sections of Indian society, including peasants, workers, students, and women, significantly broadening its base and impact.</span></p>
-
-<p><strong>Spread in Towns</strong>: The movement spread rapidly across urban areas, particularly in the form of boycotts of foreign goods, schools, and courts. Students left government schools, and lawyers gave up their practices to protest British rule. <span class="arrow">&#x2192;</span> <span class="meaning">Local leaders and Congress committees in towns like Bombay, Calcutta, and Madras played a crucial role in organizing strikes, demonstrations, and public meetings, which brought together people from different backgrounds to participate in the movement.</span></p>
-
-<p><strong>Spread in Countryside</strong>: In rural areas, the Non-Cooperation Movement took on a different character, often merging with local grievances against landlords and the colonial government. <span class="arrow">&#x2192;</span> <span class="meaning">In regions like Awadh and the United Provinces, peasants rallied against high taxes and oppressive landlords, while in the tribal areas of Andhra and Bihar, the movement blended with local resistance against British forest policies.</span></p>
-
-<p><strong>January 1921</strong>: The movement gained momentum as millions of Indians participated in boycotting British goods and institutions. <span class="arrow">&#x2192;</span> <span class="meaning">Consequences: The British government was taken aback by the scale of the movement. Indian businesses and local industries benefited as people shifted from British imports to Indian-made products. However, the movement also faced challenges, such as internal divisions and a lack of discipline among some participants, which led to violent incidents.</span></p>
-
-<p><strong>February 1922</strong>: The movement was abruptly called off after the <a href="https://en.wikipedia.org/wiki/Chauri_Chaura_incident" target="_blank">Chauri Chaura incident</a>, where a mob of protesters set fire to a police station, killing 22 policemen. <span class="arrow">&#x2192;</span> <span class="meaning">Gandhi, who was committed to non-violence, was deeply disturbed by this incident and decided to halt the movement, fearing that it was veering towards violence. The withdrawal of the Non-Cooperation Movement marked a temporary setback for the Indian struggle for independence, but it also reinforced Gandhi's insistence on non-violence as the guiding principle of the freedom movement.</span></p>
-            </div>
-
-        </div>
-
-        <!-- Section 5 -->
-
-        <div class="note section-5 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1927-1930</span>
-
-                </div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>Simon Commission and the Civil Disobedience Movement</h2>
-
-    <p><strong>1927</strong>: The British government appointed the <a href="https://en.wikipedia.org/wiki/Simon_Commission" target="_blank">Simon Commission</a> to study and suggest reforms for India. However, the commission did not include any Indian members, leading to widespread protests with the slogan "Simon Go Back." <span class="arrow">&#x2192;</span> <span class="meaning">Cause: The exclusion of Indians from the commission was seen as a direct insult and a clear indication that the British were not serious about granting self-rule to India. The widespread protests against the Simon Commission united Indians across different regions and communities.</span></p>
-
-    <p><strong>1929</strong>: The <a href="https://en.wikipedia.org/wiki/Lahore_Session_of_1929" target="_blank">Lahore session of the Indian National Congress</a> declared "Purna Swaraj" (complete independence) as the goal of the Indian freedom struggle. January 26, 1930, was celebrated as India's first Independence Day. <span class="arrow">&#x2192;</span> <span class="meaning">This marked a significant shift from the earlier demand for dominion status to the demand for complete independence from British rule.</span></p>
-
-    <p><strong>March 1930</strong>: Gandhi launched the <a href="https://en.wikipedia.org/wiki/Salt_March" target="_blank">Civil Disobedience Movement</a> with the historic <a href="https://en.wikipedia.org/wiki/Salt_March" target="_blank">Dandi March</a>, where he and his followers marched 240 miles to the Arabian Sea to make salt, defying the British salt laws. <span class="arrow">&#x2192;</span> <span class="meaning">Cause: The British monopoly on salt production and their heavy taxation on salt was a direct burden on the poor. By making salt at Dandi, Gandhi symbolically broke the British law and inspired millions to do the same, leading to mass civil disobedience across the country.</span></p>
-
-    <p><strong>Consequences</strong>: The Civil Disobedience Movement was marked by widespread defiance of British laws, including the non-payment of taxes, boycotts of British goods, and the mass resignation of Indians from government jobs. The British responded with mass arrests, including that of Gandhi. However, the movement succeeded in drawing global attention to the Indian struggle for independence and put immense pressure on the British government.</p>
-            </div>
-
-        </div>
-
-        <!-- Section 6 -->
-
-        <div class="note section-6 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1931-1932</span>
-
-                </div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>Gandhi-Irwin Pact and the Second Round Table Conference</h2>
-
-    <p><strong>March 12-April 6, 1931</strong>: Gandhi signed the <a href="https://en.wikipedia.org/wiki/Gandhi%E2%80%93Irwin_Pact" target="_blank">Gandhi-Irwin Pact</a> with the Viceroy of India, Lord Irwin. As part of the agreement, Gandhi agreed to suspend the Civil Disobedience Movement, and the British government agreed to release all political prisoners not convicted of violence. <span class="arrow">&#x2192;</span> <span class="meaning">The pact was seen as a compromise, but it also signaled a temporary truce between the Indian National Congress and the British government.</span></p>
-    <span class="arrow">&#x2192;</span> <span class="meaning">This event marked the start of the Civil Disobedience Movement.</span>
-    <p><strong>September-December 1931</strong>: Gandhi attended the <a href="https://en.wikipedia.org/wiki/Second_Round_Table_Conference" target="_blank">Second Round Table Conference</a> in London as the sole representative of the Indian National Congress. However, the conference ended in failure as the British government refused to grant India dominion status. <span class="arrow">&#x2192;</span> <span class="meaning">The failure of the Second Round Table Conference led to the resumption of the Civil Disobedience Movement, although it was less successful than before due to British repression and internal divisions within the Congress.</span></p>
-    <p><strong>1932</strong>: Communal Award and Poona Pact - Compromise between Gandhi and Ambedkar on separate electorates for Dalits.</p>
-      
-            </div>
-
-        </div>
-
-        <!-- Section 7 -->
-
-        <div class="note section-7 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1942</span>
-
-                </div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>The Quit India Movement</h2>
-
-    <p><strong>August 1942</strong>: The <a href="https://en.wikipedia.org/wiki/Quit_India_Movement" target="_blank">Quit India Movement</a> was launched by Gandhi during World War II, with the demand for an end to British rule in India. Gandhi's call of "Do or Die" resonated with the Indian masses, leading to widespread protests and strikes across the country. <span class="arrow">&#x2192;</span> <span class="meaning">Cause: The British decision to involve India in World War II without consulting Indian leaders led to growing discontent. The failure of the Cripps Mission, which was sent by the British to negotiate with Indian leaders, further aggravated the situation, leading to the launch of the Quit India Movement.</span></p>
-
-    <p><strong>Consequences</strong>: The British responded with a massive crackdown, arresting Gandhi and other leaders, and using violence to suppress the movement. However, the movement marked a significant step towards India's independence by uniting the Indian population in the demand for complete freedom from British rule. The Quit India Movement also showed the British that they could no longer govern India without Indian cooperation.</p>
-
-    <p><strong>Gandhi's Actions</strong>: Despite being arrested, Gandhi continued to inspire the movement through his writings and messages from prison. His leadership during the Quit India Movement solidified his position as the leader of the Indian freedom struggle, and his call for non-violent resistance became a key strategy in the final years leading to independence.</p>
-
-            </div>
-
-        </div>
-
-        <!-- Section 8 -->
-
-        <div class="note section-8 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>1947</span>
-
-</div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>India's Independence</h2>
-
-    <p><strong>August 15, 1947</strong>: India achieved independence from British rule. The independence came after years of struggle, with Gandhi's philosophy of non-violence and mass civil disobedience playing a pivotal role in uniting the Indian population and weakening British control. <span class="arrow">&#x2192;</span> <span class="meaning">However, independence was accompanied by the partition of India and Pakistan, leading to widespread communal violence and the displacement of millions.</span></p>
-
-    <p><strong>Consequences</strong>: The partition caused one of the largest mass migrations in history, with Hindus and Sikhs moving to India and Muslims to Pakistan. The communal violence resulted in the deaths of hundreds of thousands of people. Gandhi, who was deeply disturbed by the partition and the violence, spent his last days working for peace and communal harmony.</p>
-
-    <p><strong>Gandhi's Actions</strong>: Despite being the architect of India's independence, Gandhi was deeply saddened by the violence and chaos that followed the partition. He devoted himself to restoring peace, particularly in the regions of Bengal and Delhi, where communal tensions were highest. Gandhi's efforts to promote reconciliation and unity were tireless, and he undertook fasts to protest the violence and to pressurize leaders and the public to maintain peace.</span></p>
-
-    <p><strong>January 30, 1948</strong>: Gandhi was assassinated by Nathuram Godse, a Hindu nationalist who opposed Gandhi's tolerance towards Muslims and his efforts to bring about Hindu-Muslim unity. <span class="arrow">&#x2192;</span> <span class="meaning">Gandhi's assassination was a tragic end to the life of a leader who had dedicated his life to non-violence, truth, and justice. His death was mourned across the world, and his legacy continues to inspire movements for civil rights and freedom globally.</span></p>
-            </div>
-
-        </div>
-
-        
-        <div class="note section-9 section">
-
-            <div class="year-container">
-
-                <div class="year-line"></div>
-
-                <div class="year-box">
-
-                    <span>legacy</span>
-
-</div>
-
-            </div>
-
-            <div class="text-box">
-
-                <h2>Legacy of Mahatma Gandhi</h2>
-
-    <p>Gandhi's role in India's struggle for independence was monumental. His principles of non-violence (Ahimsa) and civil disobedience (Satyagraha) not only brought freedom to India but also left a profound impact on global movements for civil rights and social justice. Gandhi's ideas influenced leaders like Martin Luther King Jr., Nelson Mandela, and others who fought against oppression in their respective countries.</p>
-
-    <p>Gandhi's vision for India extended beyond independence. He dreamt of a nation rooted in self-reliance, communal harmony, and social equality. Although some of his dreams remain unfulfilled, his teachings continue to guide and inspire generations to strive for a more just and peaceful world.</p>
-
-            </div>
-
-        </div>
-</div>
-    </div>
-    <footer>
-        <h3 style="display: flex; justify-content: center; font-weight: bold;">
-            Made with fun by - <a style="color: #3dffc5; font-weight: underline;" href="https://github.com/sanket3yoprogrammer">@Sanket3yoprogrammer</a>
-        </h3>
-<svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 460" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(5.755, 188.878, 0, 0.8)" offset="0%"></stop><stop stop-color="rgba(103.143, 255, 184.261, 0.53)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,230L34.3,199.3C68.6,169,137,107,206,69C274.3,31,343,15,411,69C480,123,549,245,617,268.3C685.7,291,754,215,823,222.3C891.4,230,960,322,1029,345C1097.1,368,1166,322,1234,299C1302.9,276,1371,276,1440,260.7C1508.6,245,1577,215,1646,176.3C1714.3,138,1783,92,1851,76.7C1920,61,1989,77,2057,115C2125.7,153,2194,215,2263,222.3C2331.4,230,2400,184,2469,199.3C2537.1,215,2606,291,2674,291.3C2742.9,291,2811,215,2880,199.3C2948.6,184,3017,230,3086,222.3C3154.3,215,3223,153,3291,122.7C3360,92,3429,92,3497,130.3C3565.7,169,3634,245,3703,291.3C3771.4,337,3840,353,3909,322C3977.1,291,4046,215,4114,222.3C4182.9,230,4251,322,4320,345C4388.6,368,4457,322,4526,299C4594.3,276,4663,276,4731,299C4800,322,4869,368,4903,391L4937.1,414L4937.1,460L4902.9,460C4868.6,460,4800,460,4731,460C4662.9,460,4594,460,4526,460C4457.1,460,4389,460,4320,460C4251.4,460,4183,460,4114,460C4045.7,460,3977,460,3909,460C3840,460,3771,460,3703,460C3634.3,460,3566,460,3497,460C3428.6,460,3360,460,3291,460C3222.9,460,3154,460,3086,460C3017.1,460,2949,460,2880,460C2811.4,460,2743,460,2674,460C2605.7,460,2537,460,2469,460C2400,460,2331,460,2263,460C2194.3,460,2126,460,2057,460C1988.6,460,1920,460,1851,460C1782.9,460,1714,460,1646,460C1577.1,460,1509,460,1440,460C1371.4,460,1303,460,1234,460C1165.7,460,1097,460,1029,460C960,460,891,460,823,460C754.3,460,686,460,617,460C548.6,460,480,460,411,460C342.9,460,274,460,206,460C137.1,460,69,460,34,460L0,460Z"></path><defs><linearGradient id="sw-gradient-1" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 168.61, 255, 1)" offset="0%"></stop><stop stop-color="rgba(0, 255, 174.369, 0.8)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 50px); opacity:0.9" fill="url(#sw-gradient-1)" d="M0,322L34.3,314.3C68.6,307,137,291,206,260.7C274.3,230,343,184,411,153.3C480,123,549,107,617,145.7C685.7,184,754,276,823,322C891.4,368,960,368,1029,375.7C1097.1,383,1166,399,1234,337.3C1302.9,276,1371,138,1440,84.3C1508.6,31,1577,61,1646,92C1714.3,123,1783,153,1851,138C1920,123,1989,61,2057,99.7C2125.7,138,2194,276,2263,283.7C2331.4,291,2400,169,2469,145.7C2537.1,123,2606,199,2674,245.3C2742.9,291,2811,307,2880,276C2948.6,245,3017,169,3086,138C3154.3,107,3223,123,3291,115C3360,107,3429,77,3497,107.3C3565.7,138,3634,230,3703,230C3771.4,230,3840,138,3909,130.3C3977.1,123,4046,199,4114,253C4182.9,307,4251,337,4320,360.3C4388.6,383,4457,399,4526,406.3C4594.3,414,4663,414,4731,368C4800,322,4869,230,4903,184L4937.1,138L4937.1,460L4902.9,460C4868.6,460,4800,460,4731,460C4662.9,460,4594,460,4526,460C4457.1,460,4389,460,4320,460C4251.4,460,4183,460,4114,460C4045.7,460,3977,460,3909,460C3840,460,3771,460,3703,460C3634.3,460,3566,460,3497,460C3428.6,460,3360,460,3291,460C3222.9,460,3154,460,3086,460C3017.1,460,2949,460,2880,460C2811.4,460,2743,460,2674,460C2605.7,460,2537,460,2469,460C2400,460,2331,460,2263,460C2194.3,460,2126,460,2057,460C1988.6,460,1920,460,1851,460C1782.9,460,1714,460,1646,460C1577.1,460,1509,460,1440,460C1371.4,460,1303,460,1234,460C1165.7,460,1097,460,1029,460C960,460,891,460,823,460C754.3,460,686,460,617,460C548.6,460,480,460,411,460C342.9,460,274,460,206,460C137.1,460,69,460,34,460L0,460Z"></path><defs><linearGradient id="sw-gradient-2" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 134.054, 255, 1)" offset="0%"></stop><stop stop-color="rgba(0, 255, 180.129, 0.81)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 100px); opacity:0.8" fill="url(#sw-gradient-2)" d="M0,184L34.3,214.7C68.6,245,137,307,206,283.7C274.3,261,343,153,411,161C480,169,549,291,617,337.3C685.7,383,754,353,823,314.3C891.4,276,960,230,1029,237.7C1097.1,245,1166,307,1234,299C1302.9,291,1371,215,1440,176.3C1508.6,138,1577,138,1646,153.3C1714.3,169,1783,199,1851,176.3C1920,153,1989,77,2057,69C2125.7,61,2194,123,2263,138C2331.4,153,2400,123,2469,92C2537.1,61,2606,31,2674,84.3C2742.9,138,2811,276,2880,337.3C2948.6,399,3017,383,3086,383.3C3154.3,383,3223,399,3291,406.3C3360,414,3429,414,3497,360.3C3565.7,307,3634,199,3703,199.3C3771.4,199,3840,307,3909,329.7C3977.1,353,4046,291,4114,230C4182.9,169,4251,107,4320,76.7C4388.6,46,4457,46,4526,76.7C4594.3,107,4663,169,4731,199.3C4800,230,4869,230,4903,230L4937.1,230L4937.1,460L4902.9,460C4868.6,460,4800,460,4731,460C4662.9,460,4594,460,4526,460C4457.1,460,4389,460,4320,460C4251.4,460,4183,460,4114,460C4045.7,460,3977,460,3909,460C3840,460,3771,460,3703,460C3634.3,460,3566,460,3497,460C3428.6,460,3360,460,3291,460C3222.9,460,3154,460,3086,460C3017.1,460,2949,460,2880,460C2811.4,460,2743,460,2674,460C2605.7,460,2537,460,2469,460C2400,460,2331,460,2263,460C2194.3,460,2126,460,2057,460C1988.6,460,1920,460,1851,460C1782.9,460,1714,460,1646,460C1577.1,460,1509,460,1440,460C1371.4,460,1303,460,1234,460C1165.7,460,1097,460,1029,460C960,460,891,460,823,460C754.3,460,686,460,617,460C548.6,460,480,460,411,460C342.9,460,274,460,206,460C137.1,460,69,460,34,460L0,460Z"></path><defs><linearGradient id="sw-gradient-3" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(62.483, 0, 255, 1)" offset="0%"></stop><stop stop-color="rgba(0, 255, 28.227, 0.77)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 150px); opacity:0.7" fill="url(#sw-gradient-3)" d="M0,0L34.3,23C68.6,46,137,92,206,122.7C274.3,153,343,169,411,184C480,199,549,215,617,222.3C685.7,230,754,230,823,260.7C891.4,291,960,353,1029,360.3C1097.1,368,1166,322,1234,253C1302.9,184,1371,92,1440,115C1508.6,138,1577,276,1646,283.7C1714.3,291,1783,169,1851,145.7C1920,123,1989,199,2057,253C2125.7,307,2194,337,2263,291.3C2331.4,245,2400,123,2469,92C2537.1,61,2606,123,2674,153.3C2742.9,184,2811,184,2880,168.7C2948.6,153,3017,123,3086,138C3154.3,153,3223,215,3291,207C3360,199,3429,123,3497,92C3565.7,61,3634,77,3703,69C3771.4,61,3840,31,3909,69C3977.1,107,4046,215,4114,260.7C4182.9,307,4251,291,4320,253C4388.6,215,4457,153,4526,176.3C4594.3,199,4663,307,4731,360.3C4800,414,4869,414,4903,414L4937.1,414L4937.1,460L4902.9,460C4868.6,460,4800,460,4731,460C4662.9,460,4594,460,4526,460C4457.1,460,4389,460,4320,460C4251.4,460,4183,460,4114,460C4045.7,460,3977,460,3909,460C3840,460,3771,460,3703,460C3634.3,460,3566,460,3497,460C3428.6,460,3360,460,3291,460C3222.9,460,3154,460,3086,460C3017.1,460,2949,460,2880,460C2811.4,460,2743,460,2674,460C2605.7,460,2537,460,2469,460C2400,460,2331,460,2263,460C2194.3,460,2126,460,2057,460C1988.6,460,1920,460,1851,460C1782.9,460,1714,460,1646,460C1577.1,460,1509,460,1440,460C1371.4,460,1303,460,1234,460C1165.7,460,1097,460,1029,460C960,460,891,460,823,460C754.3,460,686,460,617,460C548.6,460,480,460,411,460C342.9,460,274,460,206,460C137.1,460,69,460,34,460L0,460Z"></path></svg>
-    
-    </footer>
-      <!-- JavaScript to Handle Mode Switching -->
+<div class="stars">
+    <!-- Star script -->
     <script>
-      function setMode(mode) {
-
-    document.body.className = mode + "-mode";
-
-    const toggleBar = document.querySelector('.toggle-bar');
-
-    let position = 0;
-
-    if (mode === 'color') {
-
-        position = 1;
-
-    } else if (mode === 'light') {
-
-        position = 2;
-
-    }
-
-    toggleBar.style.transform = `translateX(${position * 100}%)`;
-
-}
-      
-        function setMode(mode) {
-            document.body.className = ''; // Reset all classes
-            if (mode === 'dark') {
-                document.body.classList.add('dark-mode');
-            } else if (mode === 'color') {
-                document.body.classList.add('color-mode');
-            } else if (mode === 'light') {
-                document.body.classList.add('light-mode');
-            }
+        for (let i = 0; i < 200; i++) { // Increased number of stars
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 1; // Star size between 1 and 4
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+            star.style.animationDelay = `${Math.random() * 2}s`; // Random delay for twinkling
+            document.querySelector('.stars').appendChild(star);
         }
     </script>
-        
-    <script>
+</div>
 
-            
-            document.querySelector('.menu-icon').addEventListener('click', function() {
-  document.querySelector('.menu-options').classList.toggle('active');
-});
+<div id="passwordSection">
+    <h2><i class="fas fa-lock"></i> Enter Password</h2>
+    <div class="input-container">
+        <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
+        <i class="fas fa-eye eye-icon" id="togglePassword" onclick="togglePassword()"></i>
+    </div>
+    <button id="submitButton" onclick="verifyPassword()">Submit</button>
+    <p id="errorMsg">Incorrect password, please try again.</p>
+</div>
 
-document.querySelectorAll('.toggle-button').forEach(button => {
-  button.addEventListener('click', function() {
-    document.body.classList.remove('dark-mode', 'color-mode', 'light-mode');
-    document.body.classList.add(this.classList[1]);
-  });
-});
-  
-    </script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const pageCountElem = document.getElementById('page-count');
-    const currentSectionElem = document.getElementById('current-section');
-    const totalSectionsElem = document.getElementById('total-sections');
+<div id="protectedContent">
+    <h1>Welcome to the Protected Section <i class="fas fa-check-circle" style="color: green;"></i></h1>
+    <p>This content is now accessible because you entered the correct password.</p>
+    <p>Enjoy exploring the protected features of this website!</p>
+</div>
 
-    const sections = Array.from(document.querySelectorAll('.section'));
-    const totalSections = sections.length;
-
-    totalSectionsElem.textContent = totalSections;
-
-    function updateCurrentSection() {
-        let currentSection = 1;
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-        for (let i = 0; i < sections.length; i++) {
-            const section = sections[i];
-            const rect = section.getBoundingClientRect();
-            const sectionTop = rect.top + window.scrollY;
-            const sectionBottom = rect.bottom + window.scrollY;
-
-            if (sectionTop <= scrollPosition && sectionBottom >= scrollPosition) {
-                currentSection = i + 1;
-            }
-        }
-
-        currentSectionElem.textContent = currentSection;
-    }
-    
-    window.addEventListener('scroll', updateCurrentSection);
-    window.addEventListener('resize', updateCurrentSection);
-
-    pageCountElem.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        const onMouseMove = (e) => {
-            window.scrollBy(0, e.movementY * 5); // Adjust scroll speed factor as needed
-        };
-
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', () => {
-            document.removeEventListener('mousemove', onMouseMove);
-        }, { once: true });
-    });
-    updateCurrentSection();
-});
-</script>
+<script src="script.js"></script>
 </body>
-
 </html>
-
-
-                                                                                                                                                                                                                                                                                                                                                                                  
